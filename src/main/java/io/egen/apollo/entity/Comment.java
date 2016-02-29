@@ -7,21 +7,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="comment")
-public class Comment {	
+public @Data class Comment {	
 	@Id
 	@GeneratedValue(generator="uuid2")
 	@GenericGenerator (name="uuid2",strategy="uuid2")
-	String comment_id;
+	private String comment_id;
 	
-	String comment;	
+	private String comment;	
 	
 	@ManyToOne
 	@JoinColumn(name="movie_id")
-	private Movie movies;	
+	private Movie movie;	
 
 	@ManyToOne
 	@JoinColumn(name="user_id")

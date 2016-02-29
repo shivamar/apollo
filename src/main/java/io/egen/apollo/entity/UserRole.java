@@ -5,11 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="user_role")
-public class UserRole {
+public @Data class UserRole {
 	@Id
 	@GeneratedValue(generator="uuid2")
 	@GenericGenerator(name="uuid2", strategy="uuid2")

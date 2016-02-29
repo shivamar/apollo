@@ -22,36 +22,37 @@ public @Data class Movie {
 	@Id
 	@GeneratedValue(generator="uuid2")
 	@GenericGenerator(name="uuid2", strategy="uuid2")
-	String movie_id;	
+	private String movie_id;	
 	
-	String title;
+	private String title;
 	
-	int year;
-	String rated;
-	String runtime;
-	String plot;
-	String language;
-	String country;
-	String awards;
-	String poster;
-	int metaScore;
-	float imdb_rating;
-	float imdb_votes;
-	String imdb_id; 
-	float movie_flix_rating;
+	private int year;
+	private String rated;
+	private String runtime;
+	private String plot;
+	private String language;
+	private String country;
+	private String awards;
+	private String poster;
+	private int metaScore;
+	private float imdb_rating;
+	private float imdb_votes;
+	private String imdb_id; 
+	private float movie_flix_rating;
 	
 	@OneToOne
-	MovieType type;
+	private MovieType type;
 	
 	//secondary table
 	@ManyToMany(mappedBy = "movie", 
 	        cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	Set<Genre> genre;
+	private Set<Genre> genres;
 	
 	//secondary table
-	@ManyToMany(mappedBy="crew")
-	Set<Crew> crew;
+	@ManyToMany(mappedBy = "movie", 
+	        cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private Set<Crew> crews;
 	
 	@OneToMany(mappedBy="movie")
-	List<Comment> comments;
+	private Set<Comment> comments;
 }

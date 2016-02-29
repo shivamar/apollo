@@ -11,26 +11,28 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
 @Table(name="genre")
-public class Genre {
+public @Data class Genre {
 	@Id
 	@GeneratedValue(generator="uuid2")
 	@GenericGenerator(name="uuid2", strategy="uuid2")
-	String genre_id;
+	private String genre_id;
 	
-	String type;
+	private String type;
 		
 	@ManyToMany( cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name="movie_genre",
 			joinColumns={
-			@JoinColumn(name="movie_id", referencedColumnName="movie_id"),				
+			@JoinColumn(name="genre_id", referencedColumnName="genre_id")				
 			}
 			, inverseJoinColumns={				
-				@JoinColumn(name="genre_id", referencedColumnName="genre_id")
+			@JoinColumn(name="movie_id", referencedColumnName="movie_id"),
 	})	
 	private Set<Movie> movie;			
 }

@@ -30,7 +30,7 @@ public class JPAConfig extends WebMvcConfigurerAdapter{
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource());
-		emf.setPackagesToScan(new String[]{"io.egen.entity"});
+		emf.setPackagesToScan(new String[]{"io.egen.apollo.entity"});
 		JpaVendorAdapter jpaVendor = new HibernateJpaVendorAdapter();
 		emf.setJpaVendorAdapter(jpaVendor);
 		emf.setJpaProperties(jpaProperties());
@@ -52,11 +52,11 @@ public class JPAConfig extends WebMvcConfigurerAdapter{
 	}
 	
 	@Bean
-	private DataSource dataSource() {
+	public DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
 		ds.setUsername(env.getProperty("db.user"));
-		ds.setPassword(env.getProperty("db.Password"));
+		ds.setPassword(env.getProperty("db.password"));
 		ds.setUrl(env.getProperty("db.url"));
 		
 		return ds;

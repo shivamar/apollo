@@ -9,11 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="movie_type")
-public class MovieType {
+public @Data class MovieType {
 	@Id
 	@GeneratedValue(generator="uuid2")
 	@GenericGenerator (name="uuid2",strategy="uuid2")

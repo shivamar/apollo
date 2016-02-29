@@ -8,9 +8,10 @@ import io.egen.apollo.exceptions.MovieNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class MovieServiceImpl implements 
-MovieService{
+@Service
+public class MovieServiceImpl implements MovieService{
 
 	@Autowired
 	MovieDao dao;
@@ -44,16 +45,26 @@ MovieService{
 	}
 
 	@Override
-	public Movie updateMovie(String id, Movie Movie)
+	public Movie updateMovie(String id, Movie movie)
 			throws MovieNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		Movie existing =  dao.findMovieById(id);
+		if(existing == null) {
+			throw new MovieNotFoundException();
+		}
+		else {
+			return dao.updateMovie(movie);
+		}
 	}
 
 	@Override
 	public void deleteMovie(String id) throws MovieNotFoundException {
-		// TODO Auto-generated method stub
-		
+		Movie existing =  dao.findMovieById(id);
+		if(existing == null) {
+			throw new MovieNotFoundException();
+		}
+		else {
+			dao.deleteMovie(existing);
+		}
 	}
 
 }
