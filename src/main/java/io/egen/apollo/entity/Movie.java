@@ -11,11 +11,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import lombok.Data;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="movie")
-public class Movie {	
+public @Data class Movie {	
 	@Id
 	@GeneratedValue(generator="uuid2")
 	@GenericGenerator(name="uuid2", strategy="uuid2")

@@ -90,6 +90,14 @@
 		<artifactId>spring-orm</artifactId>
 		<version>4.2.4.RELEASE</version>
 	</dependency>
+	
+	<!-- lomboc -->
+	<dependency>
+	<groupId>org.projectlombok</groupId>
+	<artifactId>lombok</artifactId>
+	<version>1.16.6</version>
+   </dependency>
+	
 		 
 	<!-- Hibernate -->
 	<dependency>

@@ -1,30 +1,46 @@
 package io.egen.apollo.service;
 
+import io.egen.apollo.dao.MovieDao;
 import io.egen.apollo.entity.Movie;
 import io.egen.apollo.exceptions.MovieAlreadyExistsException;
 import io.egen.apollo.exceptions.MovieNotFoundException;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class MovieServiceImpl implements 
 MovieService{
 
+	@Autowired
+	MovieDao dao;
+	
 	@Override
 	public List<Movie> findAllMovies() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.findAllMovies();
 	}
 
 	@Override
 	public Movie findMovieById(String id) throws MovieNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		Movie movie =  dao.findMovieById(id);
+		if(movie == null) {
+			throw new MovieNotFoundException();
+		}
+		else {
+			return movie;
+		}
 	}
 
 	@Override
-	public Movie createMovie(Movie Movie) throws MovieAlreadyExistsException {
-		// TODO Auto-generated method stub
-		return null;
+	public Movie createMovie(Movie movie) throws MovieAlreadyExistsException {
+		String id =  movie.getMovie_id();
+		if(id == null || id.isEmpty()) {
+			return dao.createMovie(movie);
+		}
+		else {
+			throw new MovieAlreadyExistsException();
+		}
 	}
 
 	@Override
