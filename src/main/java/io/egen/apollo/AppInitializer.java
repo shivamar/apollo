@@ -1,6 +1,8 @@
 package io.egen.apollo;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import io.egen.apollo.AppConfig;
+import io.egen.apollo.JPAConfig;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 
