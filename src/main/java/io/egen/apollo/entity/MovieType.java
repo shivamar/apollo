@@ -1,14 +1,9 @@
 package io.egen.apollo.entity;
 
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.Data;
 
 import org.hibernate.annotations.GenericGenerator;
