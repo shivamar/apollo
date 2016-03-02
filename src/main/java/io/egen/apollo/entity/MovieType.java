@@ -3,13 +3,20 @@ package io.egen.apollo.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 import lombok.Data;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="movie_type")
+@NamedQueries({
+@NamedQuery(name="movieType.findAll",
+    query="SELECT m FROM MovieType m")         
+})
 public @Data class MovieType {
 	@Id
 	@GeneratedValue(generator="uuid2")

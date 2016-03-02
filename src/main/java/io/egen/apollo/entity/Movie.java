@@ -7,7 +7,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,6 +22,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="movie")
+@NamedQueries({
+@NamedQuery(name="movie.findAll",
+    query="SELECT m FROM Movie m ORDER BY m.title ASC")         
+})
 public @Data class Movie {	
 	@Id
 	@GeneratedValue(generator="uuid2")
@@ -40,9 +48,11 @@ public @Data class Movie {
 	private String imdb_id; 
 	private float movie_flix_rating;
 	
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="movie_type_id")
 	private MovieType type;
 	
+	/*
 	//secondary table
 	@ManyToMany(mappedBy = "movie", 
 	        cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -54,5 +64,6 @@ public @Data class Movie {
 	private Set<Crew> crews;
 	
 	@OneToMany(mappedBy="movie")
-	private Set<Comment> comments;
+	private Set<Comment> comments;	
+	*/
 }

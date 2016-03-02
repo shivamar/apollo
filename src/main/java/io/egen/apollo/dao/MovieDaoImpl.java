@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -12,11 +13,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-
-@NamedQueries({
-@NamedQuery(name="movie.findAll",
-    query="SELECT m FROM MOVIE m ORDER BY m.title ASC")         
-})
 
 @Repository
 @Transactional
@@ -27,9 +23,11 @@ public class MovieDaoImpl implements MovieDao {
 		
 	@Override
 	public List<Movie> findAllMovies() {
-		TypedQuery<Movie> query = (TypedQuery<Movie>) em.createNamedQuery("movie.findAll");//"SELECT m FROM MOVIE m ORDER BY m.title ASC", Movie.class);
-    	List<Movie> users = query.getResultList();
-    	return users;
+		Query findAllQuery = em.createNamedQuery("movie.findAll");
+		List<Movie> movies = findAllQuery.getResultList();
+//		TypedQuery<Movie> query = (TypedQuery<Movie>) em.createNamedQuery("movie.findAll");//"SELECT m FROM MOVIE m ORDER BY m.title ASC", Movie.class);
+//    	List<Movie> movies = query.getResultList();
+    	return movies;
 	}
 
 	@Override
