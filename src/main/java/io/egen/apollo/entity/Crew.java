@@ -17,6 +17,8 @@ import lombok.Data;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="crew")
 public @Data class Crew {	
@@ -27,9 +29,11 @@ public @Data class Crew {
 	
 	private String name;
 	
-	@OneToMany(mappedBy="role_id")
-	private List<Role> role;	
-		
+//	@OneToMany(mappedBy="role_id")
+//	private List<Role> role;	
+    
+	private String role;
+	
 	@ManyToMany
 	@JoinTable(
 			name="movie_crew",
@@ -43,5 +47,8 @@ public @Data class Crew {
 							, referencedColumnName="movie_id")
 			}
 	)
+	
+	//@JsonIgnore
+	@JoinColumn(name="movie_id")
 	private Set<Movie> movie; 
 }

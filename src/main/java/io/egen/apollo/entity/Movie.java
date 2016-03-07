@@ -51,19 +51,20 @@ public @Data class Movie {
 	@ManyToOne
 	@JoinColumn(name="movie_type_id")
 	private MovieType type;
-	
-	/*
-	//secondary table
-	@ManyToMany(mappedBy = "movie", 
-	        cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	private Set<Genre> genres;
-	
-	//secondary table
-	@ManyToMany(mappedBy = "movie", 
-	        cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	private Set<Crew> crews;
-	
-	@OneToMany(mappedBy="movie")
-	private Set<Comment> comments;	
-	*/
+			
 }
+
+/*
+//secondary table
+@ManyToMany(mappedBy = "movie", 
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+private Set<Genre> genres;
+
+//secondary table
+@ManyToMany(mappedBy = "movie", 
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+private Set<Crew> crews;
+
+@OneToMany(mappedBy="movie")
+private Set<Comment> comments;	
+*/

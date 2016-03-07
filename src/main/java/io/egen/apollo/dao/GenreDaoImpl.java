@@ -41,7 +41,6 @@ public class GenreDaoImpl implements GenreDao {
 
 	@Override
 	public Genre updateMovieGenre(String id, Genre Genre) {
-		
 		return em.merge(Genre);
 	}
 

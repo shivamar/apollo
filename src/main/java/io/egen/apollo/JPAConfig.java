@@ -42,6 +42,7 @@ public class JPAConfig extends WebMvcConfigurerAdapter{
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		properties.put("hibernate.show_sql", env.getProperty("hibernate.show.sql"));
 		properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl"));
+		properties.put("hibernate.enable_lazy_load_no_trans",env.getProperty("hibernate.enable_lazy_load_no_trans"));
 		return properties;
 	}
 
