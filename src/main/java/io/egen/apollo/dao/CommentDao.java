@@ -11,4 +11,5 @@ public interface CommentDao {
 	public Comment createMovieComment(Comment Comment); //throws MovieAlreadyExistsException;
 	public Comment updateMovieComment(String id, Comment Movie); //throws MovieNotFoundException;
 	public void deleteMovieComment(Comment comment);// throws MovieNotFoundException;
+	public List<Comment> findAllCommentsOfAMovie(String movie_id);
 }

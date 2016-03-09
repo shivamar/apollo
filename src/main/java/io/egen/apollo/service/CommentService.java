@@ -13,4 +13,5 @@ public interface CommentService {
 	public Comment createMovieComment(Comment Comment); //throws MovieAlreadyExistsException;
 	public Comment updateMovieComment(String id, Comment Movie); //throws MovieNotFoundException;
 	public void deleteMovieComment(Comment id);// throws MovieNotFoundException;
+	public List<Comment> findAllCommentsOfAMovie(String movie_id);
 }

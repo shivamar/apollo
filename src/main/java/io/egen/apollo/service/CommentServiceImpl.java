@@ -14,8 +14,7 @@ import org.springframework.stereotype.Service;
 public class CommentServiceImpl implements CommentService {
 
 	@Autowired
-	CommentDao dao;
-	
+	CommentDao dao;	
 	
 	@Override
 	public List<Comment> findAllMovieComment() {
@@ -45,6 +44,11 @@ public class CommentServiceImpl implements CommentService {
 	public void deleteMovieComment(Comment comment) {
 		dao.deleteMovieComment(comment);
 		
+	}
+
+	@Override
+	public List<Comment> findAllCommentsOfAMovie(String movie_id) {		
+		return dao.findAllCommentsOfAMovie(movie_id);
 	}
 
 }

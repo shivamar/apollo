@@ -28,12 +28,8 @@ public @Data class Crew {
 	private String crew_id;
 	
 	private String name;
-	
-//	@OneToMany(mappedBy="role_id")
-//	private List<Role> role;	
-    
-	private String role;
-	
+	private String role;	
+ 
 	@ManyToMany
 	@JoinTable(
 			name="movie_crew",

@@ -27,6 +27,14 @@ public class CommentDaoImpl implements CommentDao {
     	List<Comment> comment = findAllQuery.getResultList();
     	return comment;
 	}
+	
+	@Override
+	public List<Comment> findAllCommentsOfAMovie(String movie_id) {		
+		TypedQuery<Comment> findAllQuery = em.createNamedQuery("comment.findAllforAMovie", Comment.class);
+		findAllQuery.setParameter("movie_id", movie_id);
+    	List<Comment> comment = findAllQuery.getResultList();
+    	return comment;
+	}
 
 	@Override
 	public Comment findMovieCommentById(String id) {

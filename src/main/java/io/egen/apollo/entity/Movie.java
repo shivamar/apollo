@@ -48,6 +48,9 @@ public @Data class Movie {
 	private String imdb_id; 
 	private float movie_flix_rating;
 	
+	private String imdb_link;
+	private int user_rating_count;
+	
 	@ManyToOne
 	@JoinColumn(name="movie_type_id")
 	private MovieType type;
