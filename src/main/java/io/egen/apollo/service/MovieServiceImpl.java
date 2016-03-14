@@ -1,4 +1,4 @@
-package io.egen.apollo.service;
+    package io.egen.apollo.service;
 
 import io.egen.apollo.dao.MovieDao;
 import io.egen.apollo.entity.Movie;
@@ -21,6 +21,11 @@ public class MovieServiceImpl implements MovieService{
 		
 		return dao.findAllMovies();
 	}
+        
+        @Override
+        public List<Movie> findAllMoviesSortedBy(String sortBy) {
+                return dao.findAllMoviesSortedBy(sortBy);
+        }
 
 	@Override
 	public Movie findMovieById(String id) throws MovieNotFoundException {

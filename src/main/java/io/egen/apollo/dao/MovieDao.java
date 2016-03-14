@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface MovieDao {
 	public List<Movie> findAllMovies();
+        public List<Movie> findAllMoviesSortedBy(String sortBy);
 	public Movie findMovieById(String id);
 	public Movie createMovie(Movie user);
 	public Movie updateMovie(Movie user);

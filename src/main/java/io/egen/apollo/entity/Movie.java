@@ -26,7 +26,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NamedQuery(name="movie.findAll",
     query="SELECT m FROM Movie m ORDER BY m.title ASC")         
 })
-public @Data class Movie {	
+public @Data class Movie {
 	@Id
 	@GeneratedValue(generator="uuid2")
 	@GenericGenerator(name="uuid2", strategy="uuid2")
@@ -54,7 +54,7 @@ public @Data class Movie {
 	@ManyToOne
 	@JoinColumn(name="movie_type_id")
 	private MovieType type;
-			
+	
 }
 
 /*

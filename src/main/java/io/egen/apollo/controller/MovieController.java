@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -43,6 +44,23 @@ public class MovieController{
 		return service.findAllMovies();		
 	}
 	
+        @RequestMapping(
+                value="/sort", method=RequestMethod.GET, 
+                produces = MediaType.APPLICATION_JSON_VALUE
+        )
+	@ApiOperation(value="Find All Movies (Sorted By)",
+	notes="Returns list of movies sorted by RequestParam : 'by'. by = {imdb_votes | year | imdb_rating}")	
+	@ApiResponses(value={
+		@ApiResponse(code=200, message="Success"),
+		@ApiResponse(code=500, message="Internal Server Error")
+	})
+	public List<Movie> findAllSortedBy(@RequestParam("by") String sortBy)
+	{		
+                System.out.println("sortBy = " + sortBy);
+                // return service.findAllMovies();		
+                return service.findAllMoviesSortedBy(sortBy);
+	}
+        
 	@RequestMapping(value="{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value="Find Movie By Id",
 	notes="Returns a movie by it's if it exists.")

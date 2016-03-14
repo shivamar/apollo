@@ -57,7 +57,8 @@ public class JPAConfig extends WebMvcConfigurerAdapter{
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
 		ds.setUsername(env.getProperty("db.user"));
-		ds.setPassword(env.getProperty("db.password"));
+                String password = env.getProperty("db.password");
+                if(password != null && !password.isEmpty()) ds.setPassword(password);
 		ds.setUrl(env.getProperty("db.url"));
 		
 		return ds;

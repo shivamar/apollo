@@ -8,6 +8,7 @@ import io.egen.apollo.exceptions.MovieNotFoundException;
 
 public interface MovieService {	
 	public List<Movie> findAllMovies ();
+        public List<Movie> findAllMoviesSortedBy(String sortBy);
 	public Movie findMovieById(String id) throws MovieNotFoundException;
 	public Movie createMovie(Movie Movie) throws MovieAlreadyExistsException;
 	public Movie updateMovie(String id, Movie Movie) throws MovieNotFoundException;
