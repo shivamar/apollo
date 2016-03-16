@@ -1,4 +1,5 @@
 # apollo
 A NetFlix replica using Spring-Rest API,  HTML, CSS, JavaScript and AngularJS
 
-shiva mariswamy subramani : shivamar@buffalo.edu
+Name: shiva mariswamy subramani 
+email : shivamar@buffalo.edu
